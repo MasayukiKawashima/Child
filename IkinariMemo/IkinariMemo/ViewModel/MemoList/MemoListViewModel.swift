@@ -16,7 +16,7 @@ class MemoListViewModel: ObservableObject {
   @Published  var memoLists: Results<UserMemo>
   let realm: Realm
   private var token: NotificationToken?
-  
+
   // MARK: - Init
 
   init() {
