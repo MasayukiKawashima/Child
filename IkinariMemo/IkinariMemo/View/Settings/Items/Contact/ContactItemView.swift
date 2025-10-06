@@ -11,7 +11,7 @@ import MessageUI
 struct ContactItemView: View {
 
   // MARK: - Properties
-  
+
     @StateObject private var viewModel = ContactItemViewModel()
 
   // MARK: - Body

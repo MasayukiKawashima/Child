@@ -12,7 +12,7 @@ import RealmSwift
 class SideMenuViewModel: ObservableObject {
 
   // MARK: - Properties
-  
+
   @Published var sideMenuMemoLists: [UserMemo] = []
   private var token: NotificationToken?
   let realm: Realm

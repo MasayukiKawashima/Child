@@ -11,7 +11,7 @@ import RealmSwift
 final class CurrentUserMemoViewModel: ObservableObject {
 
   // MARK: - Properties
-  
+
   // シングルトンとして定義
   static let shared: CurrentUserMemoViewModel = .init()
   @Published  var currentUserMemo: UserMemo

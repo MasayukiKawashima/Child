@@ -17,10 +17,9 @@ struct MailView: UIViewControllerRepresentable {
 
   let recipients: [String]
   let bodyText: String
-  
 
   // MARK: - Coordinator
-  
+
   class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
     var parent: MailView
     init(parent: MailView) { self.parent = parent }

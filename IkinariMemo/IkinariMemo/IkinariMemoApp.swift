@@ -20,7 +20,7 @@ struct IkinariMemoApp: App {
   }
 
   // MARK: - Body
-  
+
     var body: some Scene {
         WindowGroup {
           TopView().environmentObject(CurrentUserMemoViewModel.shared)

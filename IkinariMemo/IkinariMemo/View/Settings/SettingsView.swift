@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
 
   // MARK: - Properties
-  
+
   @StateObject private var viewModel: SettingsViewModel = SettingsViewModel()
 
   private let bottomTextFontSizeRatio: CGFloat = 0.016
