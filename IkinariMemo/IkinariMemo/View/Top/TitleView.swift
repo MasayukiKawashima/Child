@@ -10,6 +10,7 @@ import RealmSwift
 
 struct TitleView: View {
 
+
   // MARK: - Properties
 
   @StateObject private var viewModel = TitleViewModel()
@@ -18,6 +19,7 @@ struct TitleView: View {
   private let textFieldFontSizeRatio: CGFloat = 0.07
   private let textFieldPaddingHorizontalRatio: CGFloat = 0.03
 
+  
   // MARK: - Body
 
   var body: some View {

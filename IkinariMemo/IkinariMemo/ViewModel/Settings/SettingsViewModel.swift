@@ -9,11 +9,13 @@ import Foundation
 
 class SettingsViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   @Published var appVersion: String
   @Published var year: String
 
+  
   // MARK: - Init
 
   init () {

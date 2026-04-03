@@ -20,6 +20,7 @@ struct MemoListView: View {
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
   private let backgroundColor = Color(red: 0.95, green: 0.95, blue: 0.95)
 
+  
   // MARK: - Body
 
   var body: some View {

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+
 // MARK: - Enum
 
 enum TermsType {
@@ -32,12 +33,14 @@ enum TermsType {
 
 class TermsDisplayViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   @Published var title: String
   @Published var urlString: String
   @Published var isLoading: Bool = true
 
+  
   // MARK: - Init
 
   init(type: TermsType) {

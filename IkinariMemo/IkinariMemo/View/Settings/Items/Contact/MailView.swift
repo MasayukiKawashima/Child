@@ -11,12 +11,14 @@ import MessageUI
 
 struct MailView: UIViewControllerRepresentable {
 
+
   // MARK: - Properties
 
   @Environment(\.dismiss) var dismiss
 
   let recipients: [String]
   let bodyText: String
+
 
   // MARK: - Coordinator
 
@@ -33,6 +35,7 @@ struct MailView: UIViewControllerRepresentable {
     }
   }
 
+  
   // MARK: - Methods
 
   func makeCoordinator() -> Coordinator {

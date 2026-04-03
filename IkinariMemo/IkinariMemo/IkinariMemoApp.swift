@@ -13,12 +13,14 @@ import GoogleMobileAds
 @main
 struct IkinariMemoApp: App {
 
+
   // MARK: - Init
 
   init() {
     MobileAds.shared.start()
   }
 
+  
   // MARK: - Body
 
     var body: some Scene {

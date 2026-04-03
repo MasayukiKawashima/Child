@@ -9,6 +9,7 @@ import Foundation
 
 class AdBannerViewModel: ObservableObject {
 
+  
   // MARK: - Methods
 
   func adUnitID(key: String) -> String? {

@@ -11,11 +11,13 @@ import RealmSwift
 
 class SideMenuViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   @Published var sideMenuMemoLists: [UserMemo] = []
   private var token: NotificationToken?
   let realm: Realm
+
 
   // MARK: - Init
 
@@ -24,6 +26,7 @@ class SideMenuViewModel: ObservableObject {
     observeMemos()
   }
 
+  
   // MARK: - Methods
 
   private func observeMemos() {

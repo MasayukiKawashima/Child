@@ -11,6 +11,7 @@ import Combine
 
 class ContentViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   @Published var textContent: String = ""
@@ -18,6 +19,7 @@ class ContentViewModel: ObservableObject {
 
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
   private var realm: Realm
+
 
   // MARK: - Init
 
@@ -32,6 +34,7 @@ class ContentViewModel: ObservableObject {
       }
   }
 
+  
   // MARK: - Methods
 
   func updateContent(_ newContent: String) {

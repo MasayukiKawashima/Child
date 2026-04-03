@@ -11,12 +11,14 @@ import Combine
 
 class MemoListViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   @Published  var memoLists: Results<UserMemo>
   let realm: Realm
   private var token: NotificationToken?
 
+  
   // MARK: - Init
 
   init() {
@@ -25,6 +27,7 @@ class MemoListViewModel: ObservableObject {
 
     observeMemos()
   }
+
 
   // MARK: - Methods
 

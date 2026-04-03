@@ -11,6 +11,7 @@ import Combine
 
 class TitleViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   @Published var title: String = ""
@@ -20,6 +21,7 @@ class TitleViewModel: ObservableObject {
   private var realm: Realm
   // アプリ起動時のみテキストフィールドのフォーカス処理のためのプロパティ
   var isFirstLaunch: Bool = true
+
 
   // MARK: - Init
 
@@ -43,6 +45,7 @@ class TitleViewModel: ObservableObject {
       }
   }
 
+  
   // MARK: - Methods
 
   func updateTitle(_ newTitle: String) {

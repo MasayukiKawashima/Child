@@ -9,12 +9,14 @@ import SwiftUI
 
 struct DeleteDataView: View {
 
+
   // MARK: - Properties
 
   @StateObject private var viewModel: DeleteDataViewModel = DeleteDataViewModel()
 
   @State private var isShowDeleteConfirmationAlert = false
   @State private var isShowDeleteCompletedAlert = false
+
 
   // MARK: - Body
 
@@ -37,7 +39,6 @@ struct DeleteDataView: View {
           .alert("警告", isPresented: $isShowDeleteConfirmationAlert) {
 
               Button("削除する", role: .destructive) {
-                  // 🔴 削除処理を書く
                 // １データ削除処理
                 viewModel.deleteAllMemos()
                 //　２終了ログ表示

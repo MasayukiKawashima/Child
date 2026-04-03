@@ -13,6 +13,7 @@ struct SideMenuView: View {
   // memo screenHeight = 874, geometry.size.height = 778.0
   // memoTitleFontSize = 17.7384, memoUpdateDateFontSize = 12.448
 
+
   // MARK: - Properties
 
   @StateObject var viewModel: SideMenuViewModel = SideMenuViewModel()
@@ -35,6 +36,7 @@ struct SideMenuView: View {
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
 
+  
   // MARK: - Body
 
   var body: some View {
