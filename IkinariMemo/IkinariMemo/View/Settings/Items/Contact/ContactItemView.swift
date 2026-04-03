@@ -33,7 +33,7 @@ struct ContactItemView: View {
         }
         .disabled(!viewModel.canSendMail) // 送信不可なら無効化
         .sheet(isPresented: $viewModel.isShowingMailView) {
-          MailView(recipients: viewModel.getRecipients(), bodyText: viewModel.getbodyText())
+          MailView(recipients: viewModel.getRecipients(), bodyText: viewModel.getBodyText())
         }
     }
 }

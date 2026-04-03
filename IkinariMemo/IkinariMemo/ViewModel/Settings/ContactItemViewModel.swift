@@ -38,7 +38,7 @@ final class ContactItemViewModel: ObservableObject {
     recipients
   }
 
-  func getbodyText() -> String {
+  func getBodyText() -> String {
     bodyText
   }
 }
