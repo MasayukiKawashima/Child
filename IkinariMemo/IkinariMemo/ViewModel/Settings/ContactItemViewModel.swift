@@ -11,6 +11,7 @@ import MessageUI
 @MainActor
 final class ContactItemViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   private let recipients: [String] = ["info.ikinarimemo@gmail.com"]
@@ -22,6 +23,7 @@ final class ContactItemViewModel: ObservableObject {
     MFMailComposeViewController.canSendMail()
   }
 
+  
   // MARK: - Methods
 
   func sendMail() {
@@ -36,7 +38,7 @@ final class ContactItemViewModel: ObservableObject {
     recipients
   }
 
-  func getbodyText() -> String {
+  func getBodyText() -> String {
     bodyText
   }
 }

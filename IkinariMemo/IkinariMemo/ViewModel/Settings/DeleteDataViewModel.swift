@@ -10,9 +10,11 @@ import RealmSwift
 
 class DeleteDataViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
+
 
   // MARK: - Init
 
@@ -20,6 +22,7 @@ class DeleteDataViewModel: ObservableObject {
     self.currentUserMemoViewModel = currentUserMemoViewModel
   }
 
+  
   // MARK: - Methods
 
   func deleteAllMemos() {

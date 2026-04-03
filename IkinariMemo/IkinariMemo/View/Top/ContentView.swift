@@ -10,6 +10,7 @@ import RealmSwift
 
 struct ContentView: View {
 
+
   // MARK: - Properties
 
   @StateObject private var viewModel: ContentViewModel = ContentViewModel()
@@ -17,6 +18,7 @@ struct ContentView: View {
   private let TextEditorSidePaddingRatio: CGFloat = 0.024
   private let placeholderText: String = "本文"
 
+  
   // MARK: - Body
 
   var body: some View {

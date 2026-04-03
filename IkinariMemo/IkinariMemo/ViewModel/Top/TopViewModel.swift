@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+
 // MARK: - Enums
 
 enum FocusedField {
@@ -17,12 +18,14 @@ enum FocusedField {
 
 class TopViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   @Published var isSideMenuOpen: Bool = false
   @Published var isKeyboardVisible: Bool = false
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
 //  private var cancellable: AnyCancellable?
+
 
   // MARK: - Init
 
@@ -35,6 +38,7 @@ class TopViewModel: ObservableObject {
 //      }
   }
 
+  
   // MARK: - Methods
 
   func upDateCurrentUserMemo() {

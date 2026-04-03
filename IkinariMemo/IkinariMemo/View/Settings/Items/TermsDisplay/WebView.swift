@@ -10,10 +10,12 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
 
+
   // MARK: - Properties
 
   let urlString: String
   @ObservedObject var viewModel: TermsDisplayViewModel
+
 
   // MARK: - Methods
 
@@ -32,6 +34,7 @@ struct WebView: UIViewRepresentable {
   }
 
   func updateUIView(_ uiView: WKWebView, context: Context) {}
+  
 
   // MARK: - Coordinator
 

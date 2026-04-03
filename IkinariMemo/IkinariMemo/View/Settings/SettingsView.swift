@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
 
+
   // MARK: - Properties
 
   @StateObject private var viewModel: SettingsViewModel = SettingsViewModel()
@@ -20,6 +21,7 @@ struct SettingsView: View {
   private let screenHeight = UIScreen.main.bounds.height
   private let screenWidth = UIScreen.main.bounds.width
 
+  
   // MARK: - Body
 
   var body: some View {

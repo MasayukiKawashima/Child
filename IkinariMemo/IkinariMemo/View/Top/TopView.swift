@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TopView: View {
 
+
   // MARK: Properties
 
   @StateObject private var viewModel: TopViewModel = TopViewModel()
@@ -27,6 +28,7 @@ struct TopView: View {
   private let iconSidePaddingRatio: CGFloat = 0.024
   private let iconSizeRatio: CGFloat = 0.036
 
+  
   // MARK: Body
 
   var body: some View {

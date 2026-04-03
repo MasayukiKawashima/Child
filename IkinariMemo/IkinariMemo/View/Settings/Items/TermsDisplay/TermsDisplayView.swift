@@ -10,9 +10,11 @@ import SwiftUI
 
 struct TermsDisplayView: View {
 
+
   // MARK: - Properties
 
   @StateObject private var viewModel: TermsDisplayViewModel
+
 
   // MARK: - Init
 
@@ -20,6 +22,7 @@ struct TermsDisplayView: View {
     _viewModel = StateObject(wrappedValue: TermsDisplayViewModel(type: type))
   }
 
+  
   // MARK: - Body
 
   var body: some View {

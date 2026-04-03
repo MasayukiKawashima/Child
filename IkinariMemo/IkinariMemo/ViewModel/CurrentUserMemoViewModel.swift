@@ -10,11 +10,13 @@ import RealmSwift
 
 final class CurrentUserMemoViewModel: ObservableObject {
 
+
   // MARK: - Properties
 
   // シングルトンとして定義
   static let shared: CurrentUserMemoViewModel = .init()
   @Published  var currentUserMemo: UserMemo
+
 
   // MARK: - Init
 
@@ -22,6 +24,7 @@ final class CurrentUserMemoViewModel: ObservableObject {
     currentUserMemo = UserMemo()
   }
 
+  
   // MARK: - Methods
 
   func upDate(userMemo: UserMemo) {

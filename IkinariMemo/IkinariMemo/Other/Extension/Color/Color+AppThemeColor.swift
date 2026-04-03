@@ -1,5 +1,5 @@
 //
-//  ColorExtension.swift
+//  Color+AppThemeColor.swift.swift
 //  IkinariMemo
 //
 //  Created by 川島真之 on 2025/09/08.
