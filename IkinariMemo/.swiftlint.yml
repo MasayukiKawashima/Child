@@ -49,7 +49,7 @@ excluded:
 
 # カスタム設定
 vertical_whitespace:
-  max_empty_lines: 1
+  max_empty_lines: 2
 
 # line_lengthを有効にする場合の設定例
 # line_length:

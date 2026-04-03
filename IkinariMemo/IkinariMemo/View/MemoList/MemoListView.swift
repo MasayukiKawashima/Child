@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MemoListView: View {
 
+
   // MARK: - Properties
 
   @StateObject var viewModel: MemoListViewModel = MemoListViewModel()
