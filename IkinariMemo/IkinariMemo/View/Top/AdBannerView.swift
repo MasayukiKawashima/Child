@@ -21,6 +21,7 @@ struct AdBannerView: UIViewRepresentable {
   func makeUIView(context: Context) -> BannerView {
     let screenWidth = UIScreen.main.bounds.width
     // Adaptive Banner のサイズを取得
+    // GADLargeAnchoredAdaptiveBannerAdSizeWithWidthを推奨する警告が出るが、広告のサイズの調整が必要のため一旦保留する
     let adSize = currentOrientationAnchoredAdaptiveBanner(width: screenWidth)
 
     let banner = BannerView(adSize: adSize)

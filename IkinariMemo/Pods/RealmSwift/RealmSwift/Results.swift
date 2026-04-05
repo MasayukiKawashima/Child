@@ -81,6 +81,7 @@ extension Int: SortableType {}
 extension String: SortableType {}
 extension Optional: SortableType where Wrapped: SortableType {}
 
+
 /**
  Types which have properties that can be sorted or distincted on.
  */

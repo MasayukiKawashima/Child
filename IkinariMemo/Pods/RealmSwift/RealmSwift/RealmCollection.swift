@@ -190,6 +190,7 @@ public protocol RealmCollectionValue: Hashable, _HasPersistedType where Persiste
     static func _rlmDefaultValue() -> Self
 }
 
+
 ///  A type which can appear in a Realm collection inside an Optional.
 ///
 /// :nodoc:
