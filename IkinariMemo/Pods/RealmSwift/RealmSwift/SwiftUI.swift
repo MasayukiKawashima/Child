@@ -21,6 +21,8 @@ import Foundation
 import SwiftUI
 import Combine
 import Realm
+import Realm.Private
+
 private func write<Value>(_ value: Value, _ block: (Value) -> Void) where Value: ThreadConfined {
     let thawed = value.realm == nil ? value : value.thaw() ?? value
     if let realm = thawed.realm, !realm.isInWriteTransaction {
@@ -1023,6 +1025,7 @@ extension Projection: _ObservedResultsValue { }
         }
     }
 }
+
 
 // MARK: ObservedRealmObject
 

@@ -18,5 +18,4 @@ class AdBannerViewModel: ObservableObject {
     }
     return adUnitIDs[key]
   }
-
 }

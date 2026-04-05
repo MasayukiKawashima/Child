@@ -27,12 +27,12 @@ struct SideMenuView: View {
   // 例　memoRowsHeightRatio → 38 % 874 = 0.043478.....
   private let memoRowsHeightRatio: CGFloat = 0.0286
   private let moreTextHeightRatio: CGFloat = 0.0228
-  private let gearshapeIconHeightRatio: CGFloat = 0.040
-  private let gearshapeIconLeadingPaddingRatio = 0.017
-  private let xmarkIconHeightRatio: CGFloat = 0.040
-  private let xmarkIconTrailingPaddingRatio = 0.017
+  private let gearShapeIconHeightRatio: CGFloat = 0.040
+  private let gearShapeIconLeadingPaddingRatio = 0.017
+  private let xMarkIconHeightRatio: CGFloat = 0.040
+  private let xMarkIconTrailingPaddingRatio = 0.017
   private let moreTextTrailingPaddingRatio = 0.017
-  private let moreSectionFotterHeightRatio: CGFloat = 0.068
+  private let moreSectionFooterHeightRatio: CGFloat = 0.068
   private let settingsSectionSpaceRatio: CGFloat = 0.0228
   private let placerHolderTextFontSizeRatio: CGFloat = 0.08
 
@@ -130,9 +130,9 @@ struct SideMenuView: View {
                   }
               ) {
                 Image(systemName: "gearshape")
-                  .font(.system(size: screenHeight * gearshapeIconHeightRatio))
+                  .font(.system(size: screenHeight * gearShapeIconHeightRatio))
                   .foregroundStyle(Color.gray)
-                  .padding(.leading, screenHeight * gearshapeIconLeadingPaddingRatio)
+                  .padding(.leading, screenHeight * gearShapeIconLeadingPaddingRatio)
               }
               Spacer()
 
@@ -141,11 +141,11 @@ struct SideMenuView: View {
                   isOpen.toggle()
                 } }) {
                   Image(systemName: "xmark")
-                    .font(.system(size: screenHeight * xmarkIconHeightRatio))
+                    .font(.system(size: screenHeight * xMarkIconHeightRatio))
                     .foregroundStyle(Color.gray)
                 }
-                .buttonStyle(XmarkButtonColorStyle())
-                .padding(.trailing, screenHeight * xmarkIconTrailingPaddingRatio)
+                .buttonStyle(XMarkButtonColorStyle())
+                .padding(.trailing, screenHeight * xMarkIconTrailingPaddingRatio)
             }
           }
           .padding(.bottom, 10)

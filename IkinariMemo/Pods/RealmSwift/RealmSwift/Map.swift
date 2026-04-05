@@ -18,6 +18,9 @@
 
 import Foundation
 import Realm
+import Realm.Private
+
+/// :nodoc:
 public protocol _MapKey: Hashable, _ObjcBridgeable {
     static var _rlmType: RLMPropertyType { get }
 }
