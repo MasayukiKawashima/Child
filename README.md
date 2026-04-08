@@ -4,9 +4,10 @@
 
 ## ■ ダウンロードはこちら
 
-<img width="300" height="300" alt="Image" src="https://github.com/user-attachments/assets/ce46f388-babf-4441-ae02-85ccb0400277" />
-
-App Storeのページ → https://itunes.apple.com/jp/app/6752865794?mt=8
+|App Store|
+|:--:|
+|<img width="300" height="300" alt="Image" src="https://github.com/user-attachments/assets/ce46f388-babf-4441-ae02-85ccb0400277" />|
+|https://itunes.apple.com/jp/app/6752865794?mt=8|
 
 ## ■ アプリのイメージ
 | |
