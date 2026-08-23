@@ -10,20 +10,40 @@ import SwiftUI
 struct LatestMemoEntryView: View {
 
 
+  // MARK: - Properties
+
+  private var contentTextFontOpacityRate = 0.7
+  private var separatorOpacityRate = 0.3
+  private var backgroundColorOpacityRate = 0.2
+  private var separatorHeight = 0.5
+  private var titleLineLimit = 1
+  private var topLevelVStackSpacing: CGFloat = 6
+
+  private var dummyTitle = "仮タイトル仮タイトル仮タイトル仮タイトル仮タイトル仮タイトル"
+  private var dummyText = "ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+
   // MARK: - Body
 
   var body: some View {
-    VStack(alignment: .leading, spacing: 6) {
-      Text("仮タイトル仮タイトル仮タイトル")
+    VStack(alignment: .leading, spacing: topLevelVStackSpacing) {
+      Text(dummyTitle)
         .font(.headline)
-        .lineLimit(1)
+        .lineLimit(titleLineLimit)
 
-      Text("仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文仮本文")
-        .font(.caption)
-        .foregroundStyle(.secondary)
-        .lineLimit(3)
+      Rectangle()
+        .fill(.primary.opacity(separatorOpacityRate))
+        .frame(height: separatorHeight)
+
+      Text(dummyText)
+        .font(.footnote)
+        .foregroundStyle(.primary.opacity(contentTextFontOpacityRate))
+        .truncationMode(.tail)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    .containerBackground(for: .widget) {
+      Color.mainColor.opacity(backgroundColorOpacityRate)
+    }
   }
 }
 
@@ -54,7 +74,6 @@ struct LatestMemoWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: Self.kind, provider: LatestMemoProvider()) { entry in
             LatestMemoEntryView()
-                .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("最新のメモ")
         .description("直近に更新したメモを表示します。")
