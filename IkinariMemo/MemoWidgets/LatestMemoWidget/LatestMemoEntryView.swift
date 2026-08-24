@@ -14,26 +14,45 @@ struct LatestMemoEntryView: View {
 
   private var contentTextFontOpacityRate = 0.7
   private var separatorOpacityRate = 0.3
-  private var backgroundColorOpacityRate = 0.2
-  private var separatorHeight = 0.5
+  private var backgroundColorOpacityRate = 0.175
+  private var dateTextFontOpacityRate: Double = 0.7
+  private var separatorHeight: CGFloat = 0.5
   private var titleLineLimit = 1
   private var topLevelVStackSpacing: CGFloat = 6
 
-  private var dummyTitle = "仮タイトル仮タイトル仮タイトル仮タイトル仮タイトル仮タイトル"
-  private var dummyText = "ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 20
 
+  private var dummyTitle = "仮タイトル仮タイトル仮タイトル仮タイトル仮タイトル仮タイトル"
+  private var dummyText = "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
+
+  private var dummyDate = "2026.08.24"
 
   // MARK: - Body
 
   var body: some View {
     VStack(alignment: .leading, spacing: topLevelVStackSpacing) {
+
+      HStack {
+
+        Text(dummyDate)
+          .font(.footnote)
+          .foregroundStyle(.primary.opacity(dateTextFontOpacityRate))
+
+        Spacer()
+
+        Image("EdgeOffIcon", bundle: .main)
+          .resizable()
+          .scaledToFit()
+          .frame(width: iconSize, height: iconSize)
+      }
+
       Text(dummyTitle)
         .font(.headline)
         .lineLimit(titleLineLimit)
 
       Rectangle()
-        .fill(.primary.opacity(separatorOpacityRate))
         .frame(height: separatorHeight)
+        .foregroundStyle(Color.mainColor)
 
       Text(dummyText)
         .font(.footnote)
@@ -42,7 +61,8 @@ struct LatestMemoEntryView: View {
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .containerBackground(for: .widget) {
-      Color.mainColor.opacity(backgroundColorOpacityRate)
+//      Color.mainColor.opacity(backgroundColorOpacityRate)
+      Color.white
     }
   }
 }
