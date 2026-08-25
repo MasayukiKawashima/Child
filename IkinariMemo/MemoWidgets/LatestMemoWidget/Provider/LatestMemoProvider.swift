@@ -19,14 +19,20 @@ struct LatestMemoProvider: TimelineProvider {
                    updatedAt: .now)
   }
 
+
+  // ウィジェットギャラリーを開いた直後や、システムがプレビューを描画するときに表示するダミーを設定するメソッド
   func placeholder(in context: Context) -> LatestUserMemoEntry {
+
     LatestUserMemoEntry(date: .now, memo: dummy)
   }
 
+  // ユーザーがWidgetのギャラリーを見ているときに表示するWidgetの見本を設定するメソッド
   func getSnapshot(in context: Context, completion: @escaping (LatestUserMemoEntry) -> ()) {
+
     completion(LatestUserMemoEntry(date: .now, memo: dummy))
   }
 
+  // 実際にWidgetに表示する本番用データを設定するメソッド
   func getTimeline(in context: Context, completion: @escaping (Timeline<LatestUserMemoEntry>) -> ()) {
 
     completion(Timeline(entries: [LatestUserMemoEntry(date: .now, memo: dummy)], policy: .never))
