@@ -88,9 +88,16 @@
 		FA5243013039E25E0059E1CE /* Exceptions for "MemoWidgets" folder in "IkinariMemo" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				LatestMemoWidget/LatestMemoEntryView.swift,
+				LatestMemoWidget/View/LatestMemoEntryView.swift,
 			);
 			target = FA5585932E13B04200CF231E /* IkinariMemo */;
+		};
+		FA52453E303D5B800059E1CE /* Exceptions for "IkinariMemo" folder in "MemoWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shared/SharedUserMemo.swift,
+			);
+			target = FA5241AF30381CF70059E1CE /* MemoWidgetsExtension */;
 		};
 		FA8DE0E82E6F146500CC2A99 /* Exceptions for "IkinariMemo" folder in "IkinariMemo" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -125,6 +132,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				FA8DE0E82E6F146500CC2A99 /* Exceptions for "IkinariMemo" folder in "IkinariMemo" target */,
+				FA52453E303D5B800059E1CE /* Exceptions for "IkinariMemo" folder in "MemoWidgetsExtension" target */,
 			);
 			path = IkinariMemo;
 			sourceTree = "<group>";
