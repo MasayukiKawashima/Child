@@ -76,17 +76,17 @@ struct MemoEntry: TimelineEntry {
     let date: Date
 }
 
-struct LatestMemoProvider: TimelineProvider {
-    func placeholder(in context: Context) -> MemoEntry { MemoEntry(date: .now) }
-
-    func getSnapshot(in context: Context, completion: @escaping (MemoEntry) -> Void) {
-        completion(MemoEntry(date: .now))
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<MemoEntry>) -> Void) {
-        completion(Timeline(entries: [MemoEntry(date: .now)], policy: .never))
-    }
-}
+//struct LatestMemoProvider: TimelineProvider {
+//    func placeholder(in context: Context) -> MemoEntry { MemoEntry(date: .now) }
+//
+//    func getSnapshot(in context: Context, completion: @escaping (MemoEntry) -> Void) {
+//        completion(MemoEntry(date: .now))
+//    }
+//
+//    func getTimeline(in context: Context, completion: @escaping (Timeline<MemoEntry>) -> Void) {
+//        completion(Timeline(entries: [MemoEntry(date: .now)], policy: .never))
+//    }
+//}
 
 struct LatestMemoWidget: Widget {
     static let kind = "LatestMemoWidget"
