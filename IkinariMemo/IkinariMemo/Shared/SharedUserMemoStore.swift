@@ -54,7 +54,7 @@ enum SharedUserMemoStore {
       return try? JSONDecoder().decode(SharedUserMemo.self, from: data)
   }
 
-  
+
   // MARK: - 文字数切り詰め
 
   /// ウィジェットの表示に必要な長さだけを残す
