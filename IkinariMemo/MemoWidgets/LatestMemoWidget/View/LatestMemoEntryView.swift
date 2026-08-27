@@ -6,75 +6,78 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct LatestMemoEntryView: View {
 
-
   // MARK: - Properties
 
-  private var contentTextFontOpacityRate = 0.7
-  private var separatorOpacityRate = 0.3
-  private var backgroundColorOpacityRate = 0.175
-  private var dateTextFontOpacityRate: Double = 0.7
-  private var separatorHeight: CGFloat = 0.5
-  private var titleLineLimit = 1
-  private var topLevelVStackSpacing: CGFloat = 6
+  let entry: LatestUserMemoEntry
+
+  private let contentTextFontOpacityRate = 0.7
+  private let backgroundColorOpacityRate = 0.175
+  private let dateTextFontOpacityRate: Double = 0.7
+  private let separatorHeight: CGFloat = 0.5
+  private let titleLineLimit = 1
+  private let topLevelVStackSpacing: CGFloat = 6
 
   @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 20
-
-  private var dummyTitle = "仮タイトル仮タイトル仮タイトル仮タイトル仮タイトル仮タイトル"
-  private var dummyText = "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
-
-  private var dummyDate = "2026.08.24"
 
   // MARK: - Body
 
   var body: some View {
     VStack(alignment: .leading, spacing: topLevelVStackSpacing) {
 
-      HStack {
+      if let memo = entry.memo {
 
-        Text(dummyDate)
+        HStack {
+          Text(memo.updatedAt, format: .dateTime.year().month().day())
+            .font(.footnote)
+            .foregroundStyle(.primary.opacity(dateTextFontOpacityRate))
+
+          Spacer()
+
+          Image("EdgeOffIcon")
+            .resizable()
+            .scaledToFit()
+            .frame(width: iconSize, height: iconSize)
+        }
+
+        Text(memo.title)
+          .font(.headline)
+          .lineLimit(titleLineLimit)
+
+        Rectangle()
+          .frame(height: separatorHeight)
+          .foregroundStyle(Color.mainColor)
+
+        Text(memo.content)
           .font(.footnote)
-          .foregroundStyle(.primary.opacity(dateTextFontOpacityRate))
+          .foregroundStyle(.primary.opacity(contentTextFontOpacityRate))
+          .truncationMode(.tail)
 
-        Spacer()
+      } else {
 
-        Image("EdgeOffIcon", bundle: .main)
-          .resizable()
-          .scaledToFit()
-          .frame(width: iconSize, height: iconSize)
+        Text("メモがまだありません")
+          .font(.footnote)
+          .foregroundStyle(.primary.opacity(contentTextFontOpacityRate))
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
       }
-
-      Text(dummyTitle)
-        .font(.headline)
-        .lineLimit(titleLineLimit)
-
-      Rectangle()
-        .frame(height: separatorHeight)
-        .foregroundStyle(Color.mainColor)
-
-      Text(dummyText)
-        .font(.footnote)
-        .foregroundStyle(.primary.opacity(contentTextFontOpacityRate))
-        .truncationMode(.tail)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .containerBackground(for: .widget) {
-//      Color.mainColor.opacity(backgroundColorOpacityRate)
       Color.white
     }
   }
 }
 
-
 // MARK: - レイアウトプレビュー用の仮要素
 
-import WidgetKit
-
-struct MemoEntry: TimelineEntry {
-    let date: Date
-}
+//import WidgetKit
+//
+//struct MemoEntry: TimelineEntry {
+//    let date: Date
+//}
 
 //struct LatestMemoProvider: TimelineProvider {
 //    func placeholder(in context: Context) -> MemoEntry { MemoEntry(date: .now) }

@@ -11,5 +11,5 @@ import WidgetKit
 struct LatestUserMemoEntry: TimelineEntry {
 
   let date: Date
-  let memo: SharedUserMemo
+  let memo: SharedUserMemo?
 }

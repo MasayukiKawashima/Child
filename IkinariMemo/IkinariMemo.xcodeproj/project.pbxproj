@@ -85,13 +85,6 @@
 			);
 			target = FA5241AF30381CF70059E1CE /* MemoWidgetsExtension */;
 		};
-		FA5243013039E25E0059E1CE /* Exceptions for "MemoWidgets" folder in "IkinariMemo" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				LatestMemoWidget/View/LatestMemoEntryView.swift,
-			);
-			target = FA5585932E13B04200CF231E /* IkinariMemo */;
-		};
 		FA52453E303D5B800059E1CE /* Exceptions for "IkinariMemo" folder in "MemoWidgetsExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -114,7 +107,6 @@
 		FA5241B530381CF80059E1CE /* MemoWidgets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				FA5243013039E25E0059E1CE /* Exceptions for "MemoWidgets" folder in "IkinariMemo" target */,
 				FA5241C430381CFA0059E1CE /* Exceptions for "MemoWidgets" folder in "MemoWidgetsExtension" target */,
 			);
 			path = MemoWidgets;

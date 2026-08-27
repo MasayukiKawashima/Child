@@ -25,20 +25,23 @@ struct LatestMemoProvider: TimelineProvider {
 
     LatestUserMemoEntry(date: .now, memo: dummy)
   }
-
+  
   // ユーザーがWidgetのギャラリーを見ているときに表示するWidgetの見本を設定するメソッド
   func getSnapshot(in context: Context, completion: @escaping (LatestUserMemoEntry) -> ()) {
 
-    completion(LatestUserMemoEntry(date: .now, memo: dummy))
+    // ギャラリー表示中は見本を、それ以外は実データを返す
+    let memo = context.isPreview ? dummy : SharedUserMemoStore.loadLatestMemo()
+    completion(LatestUserMemoEntry(date: .now, memo: memo))
   }
 
   // 実際にWidgetに表示する本番用データを設定するメソッド
   func getTimeline(in context: Context, completion: @escaping (Timeline<LatestUserMemoEntry>) -> ()) {
 
-    completion(Timeline(entries: [LatestUserMemoEntry(date: .now, memo: dummy)], policy: .never))
+    let entry = LatestUserMemoEntry(date: .now, memo: SharedUserMemoStore.loadLatestMemo())
+    completion(Timeline(entries: [entry], policy: .never))
   }
 
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
+  //    func relevances() async -> WidgetRelevances<Void> {
+  //        // Generate a list containing the contexts this widget is relevant in.
+  //    }
 }
