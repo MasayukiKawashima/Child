@@ -88,24 +88,24 @@ struct MemoEntry: TimelineEntry {
 //    }
 //}
 
-struct LatestMemoWidget: Widget {
-    static let kind = "LatestMemoWidget"
+//struct LatestMemoWidget: Widget {
+//    static let kind = "LatestMemoWidget"
+//
+//    var body: some WidgetConfiguration {
+//        StaticConfiguration(kind: Self.kind, provider: LatestMemoProvider()) { entry in
+//            LatestMemoEntryView()
+//        }
+//        .configurationDisplayName("最新のメモ")
+//        .description("直近に更新したメモを表示します。")
+//        .supportedFamilies([.systemMedium])
+//    }
+//}
 
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: Self.kind, provider: LatestMemoProvider()) { entry in
-            LatestMemoEntryView()
-        }
-        .configurationDisplayName("最新のメモ")
-        .description("直近に更新したメモを表示します。")
-        .supportedFamilies([.systemMedium])
-    }
-}
-
-#Preview(as: .systemMedium) {
-    LatestMemoWidget()
-} timeline: {
-    MemoEntry(date: .now)
-}
+//#Preview(as: .systemMedium) {
+//    LatestMemoWidget()
+//} timeline: {
+//    MemoEntry(date: .now)
+//}
 
 //#Preview {
 //    LatestMemoEntryView()

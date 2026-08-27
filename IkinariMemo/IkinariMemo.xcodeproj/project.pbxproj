@@ -96,6 +96,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Shared/SharedUserMemo.swift,
+				Shared/SharedUserMemoStore.swift,
+				Shared/WidgetKind.swift,
 			);
 			target = FA5241AF30381CF70059E1CE /* MemoWidgetsExtension */;
 		};
