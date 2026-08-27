@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-
-import SwiftUI
 import WidgetKit
 
 struct LatestMemoEntryView: View {
