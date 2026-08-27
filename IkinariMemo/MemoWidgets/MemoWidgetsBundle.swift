@@ -11,6 +11,6 @@ import SwiftUI
 @main
 struct MemoWidgetsBundle: WidgetBundle {
     var body: some Widget {
-        MemoWidgets()
+        LatestMemoWidget()
     }
 }
