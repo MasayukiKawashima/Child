@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 import Combine
 
 class ContentViewModel: ObservableObject {
@@ -18,14 +17,15 @@ class ContentViewModel: ObservableObject {
   private var cancellable: AnyCancellable?
 
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
-  private var realm: Realm
+  private let repository: MemoRepositoryProtocol
 
 
   // MARK: - Init
 
-  init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
+  init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared,
+       repository: MemoRepositoryProtocol = MemoRepository.shared) {
     self.currentUserMemoViewModel = currentUserMemoViewModel
-    self.realm = try! Realm()
+    self.repository = repository
 
     // currentUserMemo の変化を監視
     self.cancellable = currentUserMemoViewModel.$currentUserMemo
@@ -44,10 +44,6 @@ class ContentViewModel: ObservableObject {
   }
 
   private func saveContent() {
-    try? realm.write {
-      currentUserMemoViewModel.currentUserMemo.content = textContent
-      currentUserMemoViewModel.currentUserMemo.updatedAt = Date()
-      realm.add(currentUserMemoViewModel.currentUserMemo, update: .modified)
-    }
+    repository.save(currentUserMemoViewModel.currentUserMemo, title: nil, content: textContent)
   }
 }

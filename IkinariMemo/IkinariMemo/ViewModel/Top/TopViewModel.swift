@@ -24,13 +24,16 @@ class TopViewModel: ObservableObject {
   @Published var isSideMenuOpen: Bool = false
   @Published var isKeyboardVisible: Bool = false
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
+  private let repository: MemoRepositoryProtocol
 //  private var cancellable: AnyCancellable?
 
 
   // MARK: - Init
 
-  init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
+  init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared,
+       repository: MemoRepositoryProtocol = MemoRepository.shared) {
     self.currentUserMemoViewModel = currentUserMemoViewModel
+    self.repository = repository
 
     // currentUserMemo の変化を監視
 //    self.cancellable = currentUserMemoViewModel.$currentUserMemo
@@ -38,11 +41,16 @@ class TopViewModel: ObservableObject {
 //      }
   }
 
-  
+
   // MARK: - Methods
 
   func upDateCurrentUserMemo() {
     let newUserMemo: UserMemo = UserMemo()
     self.currentUserMemoViewModel.upDate(userMemo: newUserMemo)
+  }
+
+  /// 編集終了（キーボード非表示）時に Widget のタイムラインを更新する
+  func onEditingEnded() {
+    repository.reloadWidgetTimeline()
   }
 }

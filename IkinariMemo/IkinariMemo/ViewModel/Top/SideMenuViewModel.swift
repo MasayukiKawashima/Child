@@ -16,13 +16,13 @@ class SideMenuViewModel: ObservableObject {
 
   @Published var sideMenuMemoLists: [UserMemo] = []
   private var token: NotificationToken?
-  let realm: Realm
+  private let repository: MemoRepositoryProtocol
 
 
   // MARK: - Init
 
-  init() {
-    self.realm = try! Realm()
+  init(repository: MemoRepositoryProtocol = MemoRepository.shared) {
+    self.repository = repository
     observeMemos()
   }
 
@@ -30,10 +30,7 @@ class SideMenuViewModel: ObservableObject {
   // MARK: - Methods
 
   private func observeMemos() {
-    let allMemos = realm.objects(UserMemo.self)
-      .sorted(byKeyPath: "createdAt", ascending: false)
-
-    token = allMemos.observe { [weak self] _ in
+    token = repository.observeAll { [weak self] in
       self?.reloadSideMenuMemoLists()
     }
 
@@ -42,8 +39,7 @@ class SideMenuViewModel: ObservableObject {
 
   // 最新の最大8件を再取得する
   func reloadSideMenuMemoLists() {
-    let allMemos = realm.objects(UserMemo.self)
-      .sorted(byKeyPath: "createdAt", ascending: false)
+    let allMemos = repository.fetchAllSortedByCreatedAt()
 
     if allMemos.count > 8 {
       self.sideMenuMemoLists = Array(allMemos.prefix(8))
@@ -81,28 +77,15 @@ class SideMenuViewModel: ObservableObject {
           CurrentUserMemoViewModel.shared.upDate(userMemo: newMemo)
         }
 
-        do {
-          try realm.write {
-            realm.delete(userMemo)
-          }
-        } catch {
-          print("削除エラー: \(error.localizedDescription)")
-        }
+        repository.delete(userMemo)
       }
     }
   }
 
   // メモが一件もない場合にプレスホルダーViewを表示するための判定メソッド
   func hasAnyUserMemo() -> Bool {
-    do {
-      let realm = try Realm()
-      let results = realm.objects(UserMemo.self)
-      // !results.isEmptyとすることで、一件でもある場合true、ない場合はfalse
-      return !results.isEmpty
-    } catch {
-      print("Realmの初期化に失敗しました: \(error)")
-      return false
-    }
+    // 一件でもある場合 true、ない場合は false
+    repository.hasAnyMemo()
   }
 
 }

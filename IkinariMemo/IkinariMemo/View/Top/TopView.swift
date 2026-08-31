@@ -14,6 +14,7 @@ struct TopView: View {
 
   @StateObject private var viewModel: TopViewModel = TopViewModel()
   @FocusState private var focusedField: FocusedField?
+  @Environment(\.scenePhase) private var scenePhase
 
   private let screenHeight = UIScreen.main.bounds.height
   private let screenWidth = UIScreen.main.bounds.width
@@ -124,6 +125,13 @@ struct TopView: View {
     }
     .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
       viewModel.isKeyboardVisible = false
+      viewModel.onEditingEnded()   // 編集終了時に Widget を更新
+    }
+    .onChange(of: scenePhase) { _, newPhase in
+      // キーボードを開いたままバックグラウンドへ移った場合の取りこぼしを防ぐ
+      if newPhase == .background {
+        viewModel.onEditingEnded()
+      }
     }
   }
 }
