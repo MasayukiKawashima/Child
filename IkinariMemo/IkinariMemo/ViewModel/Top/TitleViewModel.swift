@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 import Combine
 
 class TitleViewModel: ObservableObject {
@@ -18,16 +17,17 @@ class TitleViewModel: ObservableObject {
   private var cancellable: AnyCancellable?
 
   private var currentUserMemoViewModel: CurrentUserMemoViewModel
-  private var realm: Realm
+  private let repository: MemoRepositoryProtocol
   // アプリ起動時のみテキストフィールドのフォーカス処理のためのプロパティ
   var isFirstLaunch: Bool = true
 
 
   // MARK: - Init
 
-  init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared) {
+  init(currentUserMemoViewModel: CurrentUserMemoViewModel = .shared,
+       repository: MemoRepositoryProtocol = MemoRepository.shared) {
     self.currentUserMemoViewModel = currentUserMemoViewModel
-    self.realm = try! Realm()
+    self.repository = repository
 
     // currentUserMemo の変化を監視
     self.cancellable = currentUserMemoViewModel.$currentUserMemo
@@ -55,10 +55,6 @@ class TitleViewModel: ObservableObject {
   }
 
   private func saveTitle() {
-    try? realm.write {
-      currentUserMemoViewModel.currentUserMemo.title = title
-      currentUserMemoViewModel.currentUserMemo.updatedAt = Date()
-      realm.add(currentUserMemoViewModel.currentUserMemo, update: .modified)
-    }
+    repository.save(currentUserMemoViewModel.currentUserMemo, title: title, content: nil)
   }
 }
