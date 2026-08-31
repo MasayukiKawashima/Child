@@ -14,11 +14,13 @@ protocol MemoRepositoryProtocol {
   func save(_ memo: UserMemo, title: String?, content: String?)
   func delete(_ memo: UserMemo)
   func deleteAll()
+  func reloadWidgetTimeline()
 }
 
 /// Realm への全アクセスを集約する層。
-/// 書き込み系メソッドは、トランザクション成功後に必ず
-/// Widget / 共有 UserDefaults への同期（WidgetSync.updateLatestMemo）を行う。
+/// writeAndSyncStore は書き込み成功後に共有 UserDefaults（updateSharedStore）を必ず更新する。
+/// Widget のリロード（reloadWidget）は頻度制限があるため writeAndSyncStore には含めず、
+/// 削除時や編集終了時など必要な箇所で明示的に呼ぶ。
 final class MemoRepository: MemoRepositoryProtocol {
 
 
@@ -64,9 +66,11 @@ final class MemoRepository: MemoRepositoryProtocol {
   /// メモの新規保存 / 更新。
   /// title / content は変更したい項目だけ渡す（nil の項目は据え置き）。
   /// ※ プロパティの変更は必ず write トランザクション内で行う必要があるため、
-  ///   値の代入は performWrite の中で実施している。
+  ///   値の代入は writeAndSyncStore の中で実施している。
   func save(_ memo: UserMemo, title: String? = nil, content: String? = nil) {
-    performWrite {
+    // 逐次保存。共有 UserDefaults の更新のみ（writeAndSyncStore 内で実施）。
+    // Widget のリロードは頻度制限があるため行わず、編集終了時に reloadWidgetTimeline() で行う。
+    writeAndSyncStore {
       if let title { memo.title = title }
       if let content { memo.content = content }
       memo.updatedAt = Date()
@@ -75,30 +79,37 @@ final class MemoRepository: MemoRepositoryProtocol {
   }
 
   func delete(_ memo: UserMemo) {
-    performWrite {
+    writeAndSyncStore {
       realm.delete(memo)
     }
+    // 削除は単発操作なので即時に Widget を更新する
+    WidgetSync.reloadWidget()
   }
 
   func deleteAll() {
-    performWrite {
+    writeAndSyncStore {
       realm.delete(realm.objects(UserMemo.self))
     }
+    WidgetSync.reloadWidget()
+  }
+
+  /// 編集終了時など、明示的に Widget のタイムラインを更新したいときに呼ぶ。
+  func reloadWidgetTimeline() {
+    WidgetSync.reloadWidget()
   }
 
 
   // MARK: - 共通処理
 
-  /// write トランザクションを実行し、成功したら Widget / 共有 UserDefaults を同期する。
+  /// write トランザクションを実行し、成功したら共有 UserDefaults を最新へ更新する。
+  /// Widget のリロードは含めない（必要な箇所で WidgetSync.reloadWidget を呼ぶ）。
   /// - Parameter updates: write トランザクション内で行うデータ更新処理
-  private func performWrite(_ updates: () -> Void) {
+  private func writeAndSyncStore(_ updates: () -> Void) {
     do {
       try realm.write {
         updates()
       }
-      // 内部で SharedUserMemoStore への保存（共有 UserDefaults）と
-      // WidgetCenter.reloadTimelines をまとめて実行してくれる
-      WidgetSync.updateLatestMemo()
+      WidgetSync.updateSharedStore()
     } catch {
       assertionFailure("Realm 書き込みに失敗しました: \(error)")
     }

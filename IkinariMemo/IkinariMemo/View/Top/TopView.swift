@@ -124,6 +124,7 @@ struct TopView: View {
     }
     .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
       viewModel.isKeyboardVisible = false
+      viewModel.onEditingEnded()   // 編集終了時に Widget を更新
     }
   }
 }
