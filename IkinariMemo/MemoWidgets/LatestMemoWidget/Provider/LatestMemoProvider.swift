@@ -10,11 +10,10 @@ import WidgetKit
 
 struct LatestMemoProvider: TimelineProvider {
 
-  // TODO: SharedStore.load() に差し替える
   private var dummy: SharedUserMemo {
     SharedUserMemo(id: "preview",
-                   title: "買い物リスト",
-                   content: "牛乳、卵、パン\n帰りにドラッグストアへ寄る",
+                   title: "一日を良くする朝の習慣",
+                   content: "朝の始まりを少し丁寧にするだけで、一日の気分や集中力が大きく変わる。目覚めたらまずカーテンを開けて自然光を取り込み、深呼吸で体を目覚めさせる。",
                    createdAt: .now,
                    updatedAt: .now)
   }
