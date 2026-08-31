@@ -20,7 +20,7 @@ struct NoMemosView: View {
   // MARK: - Body
 
   var body: some View {
-    Text("メモがまだありません")
+    Text("メモがありません")
       .font(.footnote)
       .foregroundStyle(.primary.opacity(contentTextFontOpacityRate))
       .frame(maxWidth: .infinity, maxHeight: .infinity)
