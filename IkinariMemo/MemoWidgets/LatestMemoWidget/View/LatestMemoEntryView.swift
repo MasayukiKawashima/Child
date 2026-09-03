@@ -21,7 +21,7 @@ struct LatestMemoEntryView: View {
   private let titleLineLimit = 1
   private let topLevelVStackSpacing: CGFloat = 6
 
-  @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 20
+  @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 28
 
   // MARK: - Body
 

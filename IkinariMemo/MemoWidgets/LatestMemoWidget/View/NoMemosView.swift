@@ -14,7 +14,7 @@ struct NoMemosView: View {
   // MARK: - Properties
 
   private let contentTextFontOpacityRate = 0.7
-  @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 20
+  @ScaledMetric(relativeTo: .footnote) private var iconSize: CGFloat = 28
 
 
   // MARK: - Body
