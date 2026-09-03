@@ -20,16 +20,22 @@ struct NoMemosView: View {
   // MARK: - Body
 
   var body: some View {
-    Text("No Memos")
-      .font(.footnote)
-      .foregroundStyle(.primary.opacity(contentTextFontOpacityRate))
-      .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .overlay(alignment: .topTrailing) {
-        Image("EdgeOffIcon")
-          .resizable()
-          .scaledToFit()
-          .frame(width: iconSize, height: iconSize)
-      }
+    ZStack {
+
+      Text("No Memos")
+        .font(.headline)
+        .foregroundStyle(.primary.opacity(contentTextFontOpacityRate))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(alignment: .topTrailing) {
+          Image("EdgeOffIcon")
+            .resizable()
+            .scaledToFit()
+            .frame(width: iconSize, height: iconSize)
+        }
+    }
+    .containerBackground(for: .widget) {
+      Color.black.opacity(0.15)
+    }
   }
 }
 
@@ -41,9 +47,6 @@ private struct NoMemosPreviewWidget: Widget {
     StaticConfiguration(kind: "NoMemosPreview", provider: LatestMemoProvider()) { _ in
       NoMemosView()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .containerBackground(for: .widget) {
-          Color.white
-        }
     }
     .supportedFamilies([.systemMedium])
   }
